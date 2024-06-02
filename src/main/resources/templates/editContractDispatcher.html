@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Contract Dispatcher</title>
+    </head>
+    <body>
+        <div class="ml-3">
+            <form method="get" th:action="@{/contract/{contractId}/editContractDispatcher(contractId = ${contractId})}">
+                <input type="text" th:name="filter" th:value="${filter}" placeholder="Enter the tag to filter"/>
+                <button type="submit" class="btn btn-warning mt-2">Find</button>
+            </form>
+        </div>
+
+        <div th:each="dispatcher : ${dispatchers}">
+            <form th:action="@{/contract/{id}/dispatcherEdit(id = ${contractId})}" method="post">
+                <div>
+                    <label th:text="${dispatcher.getName()} + ' ' + ${dispatcher.getSurname()} + '(' + ${dispatcher.getCompany()} + ')'"></label>
+                    <button type="submit" th:text="Save"></button>
+                </div>
+                <input type="hidden" th:value="${dispatcher.getId()}" th:name="dispatcherId"/>
+            </form>
+        </div>
+    </body>
+</html>

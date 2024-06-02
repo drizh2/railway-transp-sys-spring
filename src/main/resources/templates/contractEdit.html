@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit contract</title>
+    </head>
+    <body>
+        <h1>EDIT CONTRACT</h1>
+        <div>
+            <label>Customer : </label>
+            <label th:text="${contract.getCustomer().getName()} + ' ' + ${contract.getCustomer().getSurname()}"/>
+            <a th:href="@{/contract/{id}/editContractCustomer(id = ${contractId})}">Edit customer</a>
+        </div>
+        <div>
+            <label>Dispatcher : </label>
+            <label th:text="${contract.getDispatcher().getName()} + ' ' + ${contract.getDispatcher().getSurname()}"/>
+            <a th:href="@{/contract/{id}/editContractDispatcher(id = ${contractId})}">Edit dispatcher</a>
+        </div>
+        <div>
+            <label>Sum of Insurance :</label>
+            <label th:text="${contract.getSumOfInsurance()}"></label>
+        </div>
+        <div>
+            <label>Type of Cargo : </label>
+            <label th:text="${contract.getTypeOfCargo()}"></label>
+        </div>
+        <div>
+            <label>Time to Transport : </label>
+            <label th:text="${contract.getTimeToTransport()}"></label>
+        </div>
+        <div>
+            <label>Start station : </label>
+            <label th:text="${contract.getStartStation()}"></label>
+        </div>
+        <div>
+            <label>Finish station : </label>
+            <label th:text="${contract.getFinishStation()}"></label>
+        </div>
+        <div>
+            <label>Cost : </label>
+            <label th:text="${contract.getCost()}"></label>
+        </div>
+        <div>
+            <label>Weight : </label>
+            <label th:text="${contract.getWeight()}"></label>
+        </div>
+        <div>
+            <label>Date : </label>
+            <label th:text="${contract.getDate()}"></label>
+        </div>
+        <a th:href="@{/contract/{id}/editContractInfo(id = ${contractId})}">Edit info</a>
+    </body>
+</html>

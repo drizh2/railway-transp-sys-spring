@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Contracts</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+            <tr>
+                <th>CARGO TYPE</th>
+                <th>START STATION</th>
+                <th>FINISH STATION</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="contract : ${contracts}">
+                <tr>
+                    <td th:text="${contract.getTypeOfCargo()}"></td>
+                    <td th:text="${contract.getStartStation()}"></td>
+                    <td th:text="${contract.getFinishStation()}"></td>
+                    <td><a th:href="@{/contract/{id}(id = ${contract.getId()})}" th:text="edit"></a></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </body>
+</html>

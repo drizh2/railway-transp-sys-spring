@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final UserService userService;
@@ -26,16 +28,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-//                .csrf(AbstractHttpConfigurer::disable)
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
                         .csrfTokenRequestHandler(new XorCsrfTokenRequestAttributeHandler())
                         .ignoringRequestMatchers("/auth/signup")
                 )
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/home", "/signup", "/auth/register", "/login").permitAll()
-                        .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/home", "/auth/register", "signup", "/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
@@ -43,7 +42,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/user", true)
+                        .defaultSuccessUrl("/home", true)
                         .permitAll())
 //                .formLogin(Customizer.withDefaults())
                 .logout(logout -> logout

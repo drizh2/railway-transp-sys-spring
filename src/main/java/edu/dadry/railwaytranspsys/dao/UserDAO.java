@@ -5,6 +5,8 @@ import edu.dadry.railwaytranspsys.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class UserDAO {
@@ -17,5 +19,9 @@ public class UserDAO {
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElse(null);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }

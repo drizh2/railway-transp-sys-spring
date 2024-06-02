@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example</title>
+    <title>Home Page</title>
 </head>
 <body>
+<div th:if="${param.error}">
+    There are no customers or dispatchers.
+</div>
 <h1>Welcome!</h1>
 
 <p>Click <a th:href="@{/user}">here</a> to see a greeting.</p>
+<p>Click <a th:href="@{/customer}">here</a> to create customer.</p>
+<p>Click <a th:href="@{/dispatcher}">here</a> to create dispatcher.</p>
+<p>Click <a th:href="@{/contract/user}">here</a> to get all contracts for this user.</p>
+
+<form th:action="@{/contract}" method="post">
+    <button type="submit">Create Contract</button>
+</form>
 </body>
 </html>

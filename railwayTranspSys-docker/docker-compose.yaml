@@ -1,8 +1,8 @@
 version: '3.1'
 services:
-  postgesql:
+  postgresql:
     image: "postgres:latest"
-    container_name: spring.postgres
+    container_name: railwayTranspSys.postgres
     restart: unless-stopped
     environment:
       - POSTGRES_DB=postgres
@@ -15,7 +15,7 @@ services:
     volumes:
       - 'spring_postgres:/var/lib/postgresql/data/'
   pgadmin:
-    container_name: spring.pgadmin
+    container_name: railwayTranspSys.pgadmin
     image: dpage/pgadmin4:latest
     environment:
       PGADMIN_DEFAULT_EMAIL: drizh2@fake.com

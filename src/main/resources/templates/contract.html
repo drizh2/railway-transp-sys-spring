@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Attributes</title>
+    </head>
+    <body>
+        <form th:action="@{/contract/{id}/contract(id = ${contractId})}" method="post">
+            <div><label> Sum of Insurance : <input type="number" name="sumOfInsurance"/> </label></div>
+            <div><label> Type of Cargo : <input type="text" name="typeOfCargo"/> </label></div>
+            <div><label> Time to Transport : <input type="number" name="timeToTransport"/> </label></div>
+            <div><label> Start station : <input type="text" name="startStation"/> </label></div>
+            <div><label> Finish station : <input type="text" name="finishStation"/> </label></div>
+            <div><label> Cost : <input type="number" name="cost"/> </label></div>
+            <div><label> Weight : <input type="number" name="weight"/> </label></div>
+            <div><label> Date : <input type="date" name="date"/> </label></div>
+            <button type="submit" th:text="Save"></button>
+        </form>
+    </body>
+</html>

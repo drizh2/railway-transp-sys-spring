@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Contract Info</title>
+    </head>
+    <body>
+        <form th:action="@{/contract/{id}/infoEdit(id = ${contractId})}" method="post">
+            <div><label> Sum of Insurance : <input th:value="${contractInfo.getSumOfInsurance()}" type="number" name="sumOfInsurance"/> </label></div>
+            <div><label> Type of Cargo : <input th:value="${contractInfo.getTypeOfCargo()}" type="text" name="typeOfCargo"/> </label></div>
+            <div><label> Time to Transport : <input th:value="${contractInfo.getTimeToTransport()}" type="number" name="timeToTransport"/> </label></div>
+            <div><label> Start station : <input th:value="${contractInfo.getStartStation()}" type="text" name="startStation"/> </label></div>
+            <div><label> Finish station : <input th:value="${contractInfo.getFinishStation()}" type="text" name="finishStation"/> </label></div>
+            <div><label> Cost : <input th:value="${contractInfo.getCost()}" type="number" name="cost"/> </label></div>
+            <div><label> Weight : <input th:value="${contractInfo.getWeight()}" type="number" name="weight"/> </label></div>
+            <div><label> Date : <input th:value="${contractInfo.getDate()}" type="date" name="date"/> </label></div>
+            <button type="submit" th:text="Save"></button>
+        </form>
+    </body>
+</html>
