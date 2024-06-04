@@ -1,6 +1,5 @@
 package edu.dadry.railwaytranspsys.repository;
 
-import edu.dadry.railwaytranspsys.model.Customer;
 import edu.dadry.railwaytranspsys.model.Dispatcher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

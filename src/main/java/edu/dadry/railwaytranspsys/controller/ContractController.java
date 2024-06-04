@@ -100,7 +100,12 @@ public class ContractController {
 
     @GetMapping("/user")
     public String getUser(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("contracts", contractDAO.getAllContractsForUser(user));
+        List<Contract> contracts = contractDAO.getAllContractsForUser(user);
+        if (contracts.isEmpty()) {
+            return "redirect:/home?error=no_contract";
+        }
+
+        model.addAttribute("contracts", contracts);
 
         return "userContracts";
     }
